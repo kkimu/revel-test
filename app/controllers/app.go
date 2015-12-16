@@ -5,11 +5,14 @@ import "github.com/robfig/revel"
 type App struct {
 	*revel.Controller
 }
+type User struct {
+    Name string
+}
 
 func (c App) Index() revel.Result {
-	greeting := "Aloha World"
-	return c.Render(greeting)
+    return c.RenderJson(User{"go tarou"})
 }
+
 
 func (c App) Hello(myName string) revel.Result {
     c.Validation.Required(myName).Message("Your name is required!")
